@@ -55,8 +55,8 @@ export default function Footer() {
             <div className="text-3xl font-black bg-gradient-to-r from-purple-300 to-purple-500 bg-clip-text text-transparent mb-5">
               SFC
             </div>
-            <p className="text-purple-100/80 leading-relaxed mb-6">
-              Where innovation meets education. Empowering CSE students with the skills to
+            <p className="text-purple-100/80 leading-relaxed mb-6 font-inter"> 
+              Where innovation meets education. Empowering engineers with the skills to
               build, design, and innovate for the digital world.
             </p>
           <div className="flex gap-4">
@@ -133,12 +133,12 @@ export default function Footer() {
             <h4 className="text-xl font-semibold text-purple-200 mb-5">Connect</h4>
             <ul className="space-y-4 text-purple-100/80">
               <li className="flex gap-3 items-center">
-                <MapPin className="w-5 h-5 text-purple-400" />
-                <span>Society for Code , Srinagar</span>
+                <MapPin className="w-5 h-5 text-purple-400 font-inter" />
+                <span className="font-inter">Society for Code , Srinagar</span>
               </li>
-              <li className="flex gap-3 items-center">
+              <li className="flex gap-2 items-center font-inter">
                 <Phone className="w-5 h-5 text-purple-400" />
-                <span>+91 8082016593</span>
+                <span >+91 8082016593</span>
                 <span>+91 8492951234</span>
               </li>
               <li className="flex gap-3 items-center">
