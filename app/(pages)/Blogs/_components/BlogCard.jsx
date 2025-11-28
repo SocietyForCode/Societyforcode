@@ -1,40 +1,48 @@
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
-export default function BlogCard({ blog }) {
+export default function BlogCard({ blog, index }) {
   return (
-    <Link href={`/Blogs/${blog.slug}`}>
-      <div className="group bg-white shadow-md rounded-xl overflow-hidden border border-gray-200 hover:shadow-xl transition-all duration-300 cursor-pointer">
-        <div className="relative w-full h-56">
+    <Link href={`/Blogs/${blog.slug}`} className="block group">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        className="flex flex-col gap-4"
+      >
+        <div className="relative w-full aspect-[4/3] overflow-hidden rounded-lg bg-gray-100">
           <Image
             src={blog.coverImage}
             alt={blog.blogTitle}
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
           />
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
         </div>
 
-        <div className="p-6">
-          <h3 className="text-xl font-semibold mb-2 group-hover:text-[#5e3fcb] transition">
+        <div className="space-y-3">
+          <div className="flex items-center gap-3 text-xs uppercase tracking-wider text-gray-500 font-inter">
+            <span>{blog.category}</span>
+            <span className="w-1 h-1 rounded-full bg-gray-300" />
+            <span>{blog.readingTime}</span>
+          </div>
+
+          <h3 className="text-2xl font-syne font-bold leading-tight text-gray-900 group-hover:text-[#5e3fcb] transition-colors duration-300">
             {blog.blogTitle}
           </h3>
 
-          <p className="text-sm text-gray-500 mb-4">
-            {blog.authorName} • {blog.readingTime}
+          <p className="text-sm text-gray-600 line-clamp-2 font-inter">
+            {blog.blogBody.replace(/[#*]/g, "").substring(0, 150)}...
           </p>
 
-          <div className="flex gap-2 flex-wrap">
-            {blog.tags.slice(0, 3).map((tag) => (
-              <span
-                key={tag}
-                className="text-xs bg-gray-100 px-2 py-1 rounded-full text-gray-600"
-              >
-                {tag}
-              </span>
-            ))}
+          <div className="pt-2">
+            <span className="text-sm font-medium text-gray-900 border-b border-gray-200 pb-0.5 group-hover:border-[#5e3fcb] transition-colors duration-300 font-inter">
+              Read Article
+            </span>
           </div>
         </div>
-      </div>
+      </motion.div>
     </Link>
   );
 }
